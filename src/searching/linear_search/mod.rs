@@ -1,10 +1,10 @@
 /*! # Exercise 2.1-3 - Linear Search
 
- **Input**: A sequence of `n` numbers `A = (a_1, ..., a_n)` and a value `v`
+ **Input:** A sequence of `n` numbers `A = (a_1, ..., a_n)` and a value `v`
 
- **Output**: An index `i` such that `v == a_i` or `NIL` if `v` does not appear in `A`
+ **Output:** An index `i` such that `v == a_i` or `NIL` if `v` does not appear in `A`
 
- **Time complexity**: `O(n)`
+ **Time complexity:** `O(n)`
 
  Linear search is the obvious solution to the question: How do you find something in an array? The
  answer is, of course, that you simply traverse the array from left to right (or right to left,

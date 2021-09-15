@@ -1,11 +1,11 @@
 /*! # Chapter 2.1 - Insertion Sort
 
- **Input**: A sequence of `n` elements of a partial order `(a_1, a_2, ..., a_n)`
+ **Input:** A sequence of `n` elements of a partial order `(a_1, a_2, ..., a_n)`
 
- **Output**: A permutation `(a'_1, a'_2, ..., a'_n)` of the input sequence such that `a'_1 <= a'_2
+ **Output:** A permutation `(a'_1, a'_2, ..., a'_n)` of the input sequence such that `a'_1 <= a'_2
  <= ... <= a'_n`
 
- **Time complexity**: `O(n^2)`
+ **Time complexity:** `O(n^2)`
 
  Insertion sort is one of, if not _the_ simplest sorting algorithm, useful mainly for sorting small
  collections. The implementation presented here differs significantly from the pseudocode in the
