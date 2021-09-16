@@ -11,3 +11,4 @@ Yes. All code is released under the MIT license. Feel free to use any of the alg
 The following algorithms have been implemented:
  * 2.1 - Insertion Sort
  * 2.1-3 - Linear Search
+ * 2.2-2 - Selection Sort
