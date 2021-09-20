@@ -13,3 +13,4 @@ The following algorithms have been implemented:
  * 2.1-3 - Linear Search
  * 2.2-2 - Selection Sort
  * 2.3 - Merge Sort
+ * 2.3-5 - Binary Search
