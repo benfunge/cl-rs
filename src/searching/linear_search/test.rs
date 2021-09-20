@@ -5,12 +5,12 @@ use crate::testing::vector::{ElementOf, NoElementOf};
 
 #[quickcheck]
 fn finds_members(v: ElementOf<i32>) -> bool {
-    linear_search(v.data.into_iter(), v.element).is_some()
+    linear_search(&v.data, v.element).is_some()
 }
 
 #[quickcheck]
 fn doesnt_find_unmember(v: NoElementOf<i32>) -> bool {
-    linear_search(v.data.into_iter(), v.element).is_none()
+    linear_search(&v.data, v.element).is_none()
 }
 
 // Edge cases
@@ -18,7 +18,7 @@ fn doesnt_find_unmember(v: NoElementOf<i32>) -> bool {
 #[test]
 fn no_data() {
     let nothing: Vec<i32> = Vec::new();
-    if let Some(v) = linear_search(nothing.into_iter(), 0) {
+    if let Some(v) = linear_search(&nothing, 0) {
         assert!(false, "Expected None, got Some({})", v);
     }
 }
@@ -27,11 +27,11 @@ fn no_data() {
 fn only_element() {
     let value = 12;
     let data = vec![value];
-    match linear_search(data.into_iter(), value) {
+    match linear_search(&data, value) {
         Some(v) => assert_eq!(
-            v, value,
+            v, 0,
             "Got value {}, which does not match the search parameter {}!",
-            v, value
+            v, 0
         ),
         None => assert!(false, "Expected value {}, got nothing!", value),
     }
