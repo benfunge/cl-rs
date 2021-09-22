@@ -2,6 +2,7 @@ use quickcheck_macros::quickcheck;
 
 use super::merge_sort;
 
+
 // If only `is_sorted` was already stabilized...
 fn is_sorted<T: PartialOrd>(data: &Vec<T>) -> bool {
     if data.len() == 0 {
