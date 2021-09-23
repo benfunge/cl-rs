@@ -17,7 +17,7 @@ mod test;
 
 // N. b. we limit ourselves to sorting vectors because there are currently no (?) useful
 // abstractions around indexing and swapping elements.
-pub fn insertion_sort<T>(data: &mut Vec<T>)
+pub fn insertion_sort<T>(data: &mut [T])
 where
     T: PartialOrd,
 {

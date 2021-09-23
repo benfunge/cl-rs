@@ -14,7 +14,7 @@
 #[cfg(test)]
 mod test;
 
-pub fn linear_search<T>(data: &Vec<T>, value: T) -> Option<usize>
+pub fn linear_search<T>(data: &[T], value: T) -> Option<usize>
 where
     T: PartialEq,
 {

@@ -25,7 +25,7 @@ use std::ops::{Range, RangeBounds};
 #[cfg(test)]
 mod test;
 
-pub fn merge_sort<T>(mut data: &mut Vec<T>)
+pub fn merge_sort<T>(mut data: &mut [T])
 where
     T: PartialOrd + Clone,
 {
@@ -39,7 +39,7 @@ where
 
 // This is the actual main sorting function. For usability reasons, the actual `merge_sort`
 // function is a simple facade that also does some setup.
-fn merge_sort_recursion<T>(mut data: &mut Vec<T>, range: Range<usize>)
+fn merge_sort_recursion<T>(mut data: &mut [T], range: Range<usize>)
 where
     T: PartialOrd + Clone,
 {
@@ -57,7 +57,7 @@ where
 // This function is where the actual work happens: It merges two adjacent sorted subarrays of
 // `data`, namely the slices `data[left]` and `data[right]` into a whole, residing in the same
 // memory space. Unfortunately, this operation requires `O(n)` additional memory.
-fn merge<T, L, R>(data: &mut Vec<T>, left: L, right: R)
+fn merge<T, L, R>(data: &mut [T], left: L, right: R)
 where
     T: PartialOrd + Clone,
     L: RangeBounds<usize>,
@@ -67,7 +67,6 @@ where
     let right = slice::range(right, ..data.len());
 
     let mut data_index = left.start;
-    let data_end = right.end;
 
     let mut left_data = Vec::from(&data[left]);
     let mut right_data = Vec::from(&data[right]);
@@ -107,5 +106,7 @@ where
 
     // (3) after having exhausted all elements from `left`, move over the remaining elements from
     // `right`.
-    data.splice(data_index..data_end, drain_right);
+    for item in drain_right {
+        assign_next(item);
+    }
 }

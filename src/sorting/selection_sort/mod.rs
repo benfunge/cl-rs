@@ -30,7 +30,7 @@ where
     min_index
 }
 
-pub fn selection_sort<T>(data: &mut Vec<T>)
+pub fn selection_sort<T>(data: &mut [T])
 where
     T: PartialOrd,
 {

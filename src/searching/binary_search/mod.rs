@@ -17,7 +17,7 @@ use crate::util::slice;
 #[cfg(test)]
 mod test;
 
-pub fn binary_search<T>(data: &Vec<T>, value: T) -> Option<usize>
+pub fn binary_search<T>(data: &[T], value: T) -> Option<usize>
 where
     T: PartialOrd,
 {
@@ -28,7 +28,7 @@ where
     binary_search_recursion(data, value, 0..data.len())
 }
 
-fn binary_search_recursion<T, B>(data: &Vec<T>, value: T, bounds: B) -> Option<usize>
+fn binary_search_recursion<T, B>(data: &[T], value: T, bounds: B) -> Option<usize>
 where
     T: PartialOrd,
     B: RangeBounds<usize>,
