@@ -3,6 +3,9 @@ use std::ops::Range;
 pub mod shamos;
 pub mod naive;
 
+#[cfg(test)]
+mod test;
+
 /// A type encapsulating a maximal subarray of some slice.
 #[derive(Debug, Clone, PartialEq, Eq)]
 pub struct MaximumSubarray<T> {

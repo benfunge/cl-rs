@@ -3,6 +3,17 @@ use crate::maximum_subarray::naive::MaximumSubarray;
 use super::naive_algorithm;
 
 #[test]
+fn weird() {
+    assert_eq!(
+        naive_algorithm(&[0, 1]),
+        MaximumSubarray {
+            range: 0..2,
+            value: 1,
+        }
+    );
+}
+
+#[test]
 fn empty() {
     assert_eq!(
         naive_algorithm(&[]),
@@ -31,7 +42,7 @@ fn all_negative() {
         range: 0..0,
         value: 0,
     };
-    
+
     assert_eq!(naive_algorithm(&data), solution);
 }
 
