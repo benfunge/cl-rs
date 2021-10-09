@@ -15,5 +15,6 @@ The following algorithms have been implemented:
  * 2.3 - Merge Sort
  * 2.3-5 - Binary Search
  * 2-2 - Bubble Sort
- * 4.1 - Shamo's Algorithms
+ * 4.1 - Shamo's Algorithm
  * 4.1-2 - Maximum Subarray: Naive Algorithm
+ * 4.1-5 - Kadane's Algorithm
