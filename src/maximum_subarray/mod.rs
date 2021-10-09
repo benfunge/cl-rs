@@ -1,7 +1,8 @@
 use std::ops::Range;
 
-pub mod shamos;
+pub mod kadanes;
 pub mod naive;
+pub mod shamos;
 
 #[cfg(test)]
 mod test;

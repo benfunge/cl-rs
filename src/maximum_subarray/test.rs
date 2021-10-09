@@ -1,6 +1,6 @@
 use crate::testing::vector::{AllNegative, AllPositive};
 
-use super::{naive::naive_algorithm, shamos::shamos_algorithm, MaximumSubarray};
+use super::{MaximumSubarray, kadanes::kadanes_algorithm, naive::naive_algorithm, shamos::shamos_algorithm};
 
 use quickcheck_macros::quickcheck;
 
@@ -23,7 +23,7 @@ struct Algorithm<'a> {
     name: &'a str,
 }
 
-const ALGORITHMS: [Algorithm; 2] = [
+const ALGORITHMS: [Algorithm; 3] = [
     Algorithm {
         algorithm: naive_algorithm,
         name: "naive_algorithm",
@@ -31,6 +31,10 @@ const ALGORITHMS: [Algorithm; 2] = [
     Algorithm {
         algorithm: shamos_algorithm,
         name: "shamos_algorithm",
+    },
+    Algorithm {
+        algorithm: kadanes_algorithm,
+        name: "kadanes_algorithm",
     },
 ];
 

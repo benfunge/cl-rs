@@ -1,11 +1,11 @@
-use crate::maximum_subarray::naive::MaximumSubarray;
+use crate::maximum_subarray::kadanes::MaximumSubarray;
 
-use super::naive_algorithm;
+use super::kadanes_algorithm;
 
 #[test]
 fn empty() {
     assert_eq!(
-        naive_algorithm(&[]),
+        kadanes_algorithm(&[]),
         MaximumSubarray {
             range: 0..0,
             value: 0,
@@ -21,7 +21,7 @@ fn all_positive() {
         value: data.iter().sum(),
     };
 
-    assert_eq!(naive_algorithm(&data), solution);
+    assert_eq!(kadanes_algorithm(&data), solution);
 }
 
 #[test]
@@ -32,13 +32,13 @@ fn all_negative() {
         value: 0,
     };
 
-    assert_eq!(naive_algorithm(&data), solution);
+    assert_eq!(kadanes_algorithm(&data), solution);
 }
 
 #[test]
 fn example_1() {
     assert_eq!(
-        naive_algorithm(&[1, -4, 3, -4]),
+        kadanes_algorithm(&[1, -4, 3, -4]),
         MaximumSubarray {
             range: 2..3,
             value: 3
