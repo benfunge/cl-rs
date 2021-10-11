@@ -1,3 +1,4 @@
+pub mod matrix_multiplication;
 pub mod maximum_subarray;
 pub mod searching;
 pub mod sorting;
