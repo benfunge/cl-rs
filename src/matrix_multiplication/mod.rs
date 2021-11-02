@@ -13,8 +13,8 @@ mod test;
 /// The size of a matrix.
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 pub struct MatrixDimensions {
-    pub width: usize,
-    pub height: usize,
+    pub columns: usize,
+    pub rows: usize,
 }
 
 /// Index type into a matrix
@@ -61,12 +61,26 @@ where
     pub fn from_value(dimensions: MatrixDimensions, value: T) -> Matrix<T> {
         Matrix {
             dimensions,
-            data: vec![value; dimensions.width * dimensions.height],
+            data: vec![value; dimensions.columns * dimensions.rows],
         }
     }
 }
 
 impl<T> Matrix<T> {
+    /// Construct a new matrix of given dimensions from a `Vec<T>`.
+    ///
+    /// ## Panics
+    /// This function panics if `data.len()` is not equal to `columns` times `rows` from the
+    /// passed dimensions.
+    pub fn from_data(dimensions: MatrixDimensions, data: Vec<T>) -> Matrix<T> {
+        assert_eq!(
+            data.len(),
+            dimensions.rows * dimensions.columns,
+            "Data must match passed dimensions!"
+        );
+
+        Matrix { dimensions, data }
+    }
     /// Construct a new matrix of given dimensions from an iterator.
     ///
     /// ## Panics
@@ -75,7 +89,7 @@ impl<T> Matrix<T> {
     where
         I: IntoIterator<Item = T>,
     {
-        let data_size = dimensions.width * dimensions.height;
+        let data_size = dimensions.columns * dimensions.rows;
         let mut data = Vec::with_capacity(data_size);
 
         let mut iter = iter.into_iter();
@@ -93,7 +107,7 @@ impl<T> Matrix<T> {
     where
         F: FnMut() -> T,
     {
-        let data_size = dimensions.width * dimensions.height;
+        let data_size = dimensions.columns * dimensions.rows;
         let mut data = Vec::with_capacity(data_size);
 
         for _i in 0..data_size {
@@ -110,11 +124,11 @@ impl<T> Matrix<T> {
     where
         G: Fn(MatrixIndex) -> T,
     {
-        let data_size = dimensions.width * dimensions.height;
+        let data_size = dimensions.columns * dimensions.rows;
         let mut data = Vec::with_capacity(data_size);
 
-        for y in 0..dimensions.height {
-            for x in 0..dimensions.width {
+        for y in 0..dimensions.rows {
+            for x in 0..dimensions.columns {
                 let element = g(MatrixIndex { x, y });
                 data.push(element);
             }
@@ -128,15 +142,15 @@ impl<T> Index<MatrixIndex> for Matrix<T> {
     type Output = T;
 
     fn index(&self, MatrixIndex { x, y }: MatrixIndex) -> &Self::Output {
-        let MatrixDimensions { width, .. } = self.dimensions;
-        &self.data[x + y * width]
+        let MatrixDimensions { columns, .. } = self.dimensions;
+        &self.data[x + y * columns]
     }
 }
 
 impl<T> IndexMut<MatrixIndex> for Matrix<T> {
     fn index_mut(&mut self, MatrixIndex { x, y }: MatrixIndex) -> &mut Self::Output {
-        let MatrixDimensions { width, .. } = self.dimensions;
-        &mut self.data[x + y * width]
+        let MatrixDimensions { columns, .. } = self.dimensions;
+        &mut self.data[x + y * columns]
     }
 }
 

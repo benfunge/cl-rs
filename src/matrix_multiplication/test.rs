@@ -8,8 +8,8 @@ use super::*;
 fn short_iterator() {
     Matrix::from_iterator(
         MatrixDimensions {
-            width: 10,
-            height: 10,
+            columns: 10,
+            rows: 10,
         },
         (0..2).into_iter(),
     );
@@ -24,7 +24,7 @@ fn from_generator(width: u8, height: u8) -> TestResult {
         return TestResult::discard();
     }
 
-    let dimensions = MatrixDimensions { width, height };
+    let dimensions = MatrixDimensions { columns: width, rows: height };
 
     let generator = |MatrixIndex { x, y }| x + width * y;
     let matrix = Matrix::from_generator(dimensions, generator);
@@ -47,7 +47,7 @@ fn from_iterator(width: u8, height: u8) -> TestResult {
         return TestResult::discard();
     }
 
-    let dimensions = MatrixDimensions { width, height };
+    let dimensions = MatrixDimensions { columns: width, rows: height };
     let matrix = Matrix::from_iterator(dimensions, (0..width * height).into_iter());
 
     TestResult::from_bool(
